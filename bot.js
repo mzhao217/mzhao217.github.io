@@ -179,6 +179,13 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
             return Math.round(Math.random() * (max - min) + min);
         },
         schedule: function(time, interval, _tag) {
+			console.log('hehe schedule');
+			console.log('interval is');
+			console.log(interval);
+			console.log('time is');
+			console.log(time);
+			console.log('tag is');
+			console.log(tag);
             var times = [],
                 now = new Date().getTime(),
                 sched_time = Math.max(time, now) - interval,
