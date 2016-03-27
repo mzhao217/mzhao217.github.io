@@ -419,7 +419,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 };
 			console.log('hehe ajax');
 			console.log('hehe request: params');
-			console.log(params):
+			console.log(params);
 			console.log('hehe method');
 			console.log(method);
             $.post(that.ajax, JSON.stringify(params), function(data) {
