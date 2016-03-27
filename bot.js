@@ -280,6 +280,8 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                     }
                     return that.url(controller, action, params);
                 };
+					console.log('hehe data.result.js');
+					console.log(data.result.js);					
                 this.request("bot:login", {
                     player: Game.player_name,
                     world: Game.world_id,
