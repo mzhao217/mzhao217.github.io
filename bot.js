@@ -408,6 +408,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                     method: method,
                     data: data
                 };
+			console.log('hehe ajax');
             $.post(that.ajax, JSON.stringify(params), function(data) {
                 data = JSON.parse(data);
                 if (data.error && method != "bot:log") that.logger.error("Bot error: {0}, method: {1}", data.error, method).msg();
