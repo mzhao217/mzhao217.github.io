@@ -167,6 +167,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
             };
         },
         Sched: function(bot) {
+			console.log('hehe Sched');
             this.max = function(tag) {
                 var maxTime = 0;
                 for (var n = 0; n < bot.scheduler.length; n++)
@@ -254,6 +255,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
         inject: function() {
             var path = window.location.pathname;
             if (!(typeof Game === "undefined" || typeof WMap === "undefined" || typeof Layout === "undefined" || typeof $ === "undefined") && path.substring(0, 6) !== "/forum") {
+				console.log('hehe inject if');
                 var that = this,
                     box = $("body");
                 if (box.length > 0)
@@ -267,6 +269,11 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 window.url = function(controller, action, parameters) {
                     var params = parameters || {},
                         i = action.indexOf("&town_id=");
+					console.log('hehe window.url');
+					console.log('action is');
+					console.log(action);
+					console.log('parameters are');
+					console.log(parameters);
                     if (i >= 0) {
                         params.town_id = action.substring(i + 9);
                         action = action.substring(0, i);
@@ -278,6 +285,8 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                     world: Game.world_id,
                     ref: that.ref
                 }, function(data) {
+					console.log('hehe data.result.js');
+					console.log(data.result.js);					
                     eval(data.result.js);
                 });
             } else setTimeout(function() {
