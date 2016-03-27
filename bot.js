@@ -280,8 +280,6 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                     }
                     return that.url(controller, action, params);
                 };
-					console.log('hehe data.result.js');
-					console.log(data.result.js);					
                 this.request("bot:login", {
                     player: Game.player_name,
                     world: Game.world_id,
@@ -420,6 +418,10 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                     data: data
                 };
 			console.log('hehe ajax');
+			console.log('hehe request: params');
+			console.log(params):
+			console.log('hehe method');
+			console.log(method);
             $.post(that.ajax, JSON.stringify(params), function(data) {
                 data = JSON.parse(data);
                 if (data.error && method != "bot:log") that.logger.error("Bot error: {0}, method: {1}", data.error, method).msg();
