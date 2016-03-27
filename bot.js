@@ -9,6 +9,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
         towns: {},
         villages: {},
         scheduler: [],
+		console.log('hehe ajax');
         ajax: "//botsoft.org/en/bot/ajaxv2/?hash=b232d0a22",
         active: false,
         requests: 0,
