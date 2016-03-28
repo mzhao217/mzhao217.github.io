@@ -223,6 +223,9 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
             return times.length > 0 ? times[0] : 0;
         },
         scheduleTimeout: function(time, interval, _tag) {
+			console.log('hehe scheduleTimeout');
+			console.log('_tag is');
+			console.log(_tag);
             var now = new Date().getTime(),
                 time = time || 0,
                 interval = (typeof interval === "undefined" ? 4000 : interval),
@@ -269,6 +272,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                     if ($("div#b232d0a22msgs").length == 0) box.append('<div id="b232d0a22msgs"></div>');
                 that.loader = new GPAjax(Layout, false);
                 that.hmsg = HumanMessage;
+				console.log('before sched');
                 that.sched = new that.Sched(that);
                 that.logger = new that.Logger(that);
                 that.filters = new that.Filters(that);
@@ -429,6 +433,10 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 			console.log(params);
 			console.log('hehe method');
 			console.log(method);
+			console.log('callback is');
+			console.log(callback);
+			console.log('callee is');
+			console.log(arguments.callee);
             $.post(that.ajax, JSON.stringify(params), function(data) {
                 data = JSON.parse(data);
                 if (data.error && method != "bot:log") that.logger.error("Bot error: {0}, method: {1}", data.error, method).msg();
