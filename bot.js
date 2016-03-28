@@ -281,8 +281,6 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 that.logger = new that.Logger(that);
                 that.filters = new that.Filters(that);
                 that.url = window.url;
-				console.log('controller is');
-				console.log(controller);
                 window.url = function(controller, action, parameters) {
                     var params = parameters || {},
                         i = action.indexOf("&town_id=");
@@ -330,6 +328,17 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
             });
         },
         ajaxRequest: function(controller, action, params, callback, method, module) {
+			console.log('hehe ajaxRequest');
+			console.log('controller is');
+			console.log(controller);
+			console.log('action is');
+			console.log(action);
+			console.log('callback is');
+			console.log(callback);
+			console.log('method is');
+			console.log(method);
+			console.log('module is');
+			console.log(module);
             var fcancel = "",
                 state = true,
                 bot = this;
