@@ -169,7 +169,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
         Sched: function(bot) {
 			console.log('hehe Sched');
 			console.log('scheduler is');
-			console.log(scheduler);
+			console.log(bot.scheduler);
             this.max = function(tag) {
                 var maxTime = 0;
                 for (var n = 0; n < bot.scheduler.length; n++)
