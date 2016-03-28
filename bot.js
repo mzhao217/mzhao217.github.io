@@ -281,6 +281,8 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 that.logger = new that.Logger(that);
                 that.filters = new that.Filters(that);
                 that.url = window.url;
+				console.log('controller is');
+				console.log(controller);
                 window.url = function(controller, action, parameters) {
                     var params = parameters || {},
                         i = action.indexOf("&town_id=");
