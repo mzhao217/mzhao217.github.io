@@ -276,6 +276,8 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 that.hmsg = HumanMessage;
 				console.log('before sched');
                 that.sched = new that.Sched(that);
+				console.log('that.sched is');
+				console.log(that.sched);
                 that.logger = new that.Logger(that);
                 that.filters = new that.Filters(that);
                 that.url = window.url;
