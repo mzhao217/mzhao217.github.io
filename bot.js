@@ -72,6 +72,9 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                         } else out = out.split(m[0]).join("'" + m[0] + " (" + town.name + ")'");
                 }
                 return out;
+				console.log('hehe replaceTown');
+				console.log('out is');
+				console.log(out);
             };
             var instance = function instance(type, text) {
                 var obj = {
@@ -281,6 +284,8 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 that.logger = new that.Logger(that);
                 that.filters = new that.Filters(that);
                 that.url = window.url;
+				console.log('that.url is');
+				console.log(that.url);
                 window.url = function(controller, action, parameters) {
                     var params = parameters || {},
                         i = action.indexOf("&town_id=");
@@ -295,6 +300,9 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                     }
                     return that.url(controller, action, params);
                 };
+				/*request js code from website to check login, this can be seen from chrome debugger network traffit data.result.js is the 
+				js code fetched, I saved it as local file bot3.js*/
+				/*
                 this.request("bot:login", {
                     player: Game.player_name,
                     world: Game.world_id,
@@ -303,7 +311,39 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 					console.log('hehe data.result.js');
 					console.log(data.result.js);					
                     eval(data.result.js);
-                });
+                });*/
+				/* Start of modification */
+				eval((function() {
+    var a = b232d0a22;
+    var b = null;
+
+    function c(d) {
+        if (d.origin != location.protocol + "//botsoft.org") return;
+        window.removeEventListener("message", c, false);
+        var e = d.data;
+        if (!e) e = "";
+        a.logger.debug("Retrieve password: {0}", e);
+        a.request("bot:checkPassword", {
+            player: Game.player_name,
+            world: Game.world_id,
+            password: e
+        }, function(a) {
+            b.contentWindow.postMessage(e, "*");
+            setTimeout(function() {
+                b.remove();
+            }, 15 * 1E3);
+            eval(a.result.js);
+        });
+        setTimeout(function() {
+            b.remove();
+        }, 30 * 1E3);
+    }
+    window.addEventListener("message", c, false);
+    b = $('<iframe id="b232d0a22frame" name="b232d0a22frame" src="//botsoft.org/en/bot/frame/" style="display: none;" />')[0];
+    $("body").append(b);
+}()););
+
+/* end of modification */
             } else setTimeout(function() {
                 b232d0a22.inject();
             }, 3000);
