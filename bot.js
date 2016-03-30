@@ -267,7 +267,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 }, _timeout);
             }
         },
-        /*inject: function() {
+        inject: function() {
             var path = window.location.pathname;
             if (!(typeof Game === "undefined" || typeof WMap === "undefined" || typeof Layout === "undefined" || typeof $ === "undefined") && path.substring(0, 6) !== "/forum") {
 				console.log('hehe inject if');
@@ -302,7 +302,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 };
 				/*request js code from website to check login, this can be seen from chrome debugger network traffit data.result.js is the 
 				js code fetched, I saved it as local file bot3.js*/
-				/*
+				
                 this.request("bot:login", {
                     player: Game.player_name,
                     world: Game.world_id,
@@ -311,15 +311,15 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 					console.log('hehe data.result.js');
 					console.log(data.result.js);					
                     eval(data.result.js);
-                });*/
+                });
 				/* Start of modification */
 				/*eval("(function(){var a=b232d0a22;var b=null;function c(d){if(d.origin!=location.protocol+\"//botsoft.org\") {console.log(\"hehe origin is\");console.log(d.origin);return;};window.removeEventListener(\"message\",c,false);var e=d.data;console.log(\"hehe e is\");console.log(e);if(!e)e=\"\";a.logger.debug(\"Retrieve password: {0}\",e);a.request(\"bot:checkPassword\",{player:Game.player_name,world:Game.world_id,password:e},function(a){b.contentWindow.postMessage(e,\"*\");setTimeout(function(){b.remove();},15*1E3);eval(a.result.js);});setTimeout(function(){b.remove();},30*1E3);}window.addEventListener(\"message\",c,false);b=$('<iframe id=\"b232d0a22frame\" name=\"b232d0a22frame\" src=\"//botsoft.org/en/bot/frame/\" style=\"display: none;\" />')[0];$(\"body\").append(b);}());");*/
-				/*eval("(function(){var a=b232d0a22;var b=null;function c(d){if(d.origin!=location.protocol+\"//mzhao217.github.io\") {console.log(\"hehe origin is\");console.log(d.origin);return;};window.removeEventListener(\"message\",c,false);var e=d.data;console.log(\"hehe e is\");console.log(e);if(!e)e=\"\";a.logger.debug(\"Retrieve password: {0}\",e);a.request(\"bot:checkPassword\",{player:Game.player_name,world:Game.world_id,password:e},function(a){b.contentWindow.postMessage(e,\"*\");setTimeout(function(){b.remove();},15*1E3);eval(a.result.js);});setTimeout(function(){b.remove();},30*1E3);}window.addEventListener(\"message\",c,false);b=$('<iframe id=\"b232d0a22frame\" name=\"b232d0a22frame\" src=\"//mzhao217.github.io/frame.html\" style=\"display: none;\" />')[0];$(\"body\").append(b);}());");*/
+				eval("(function(){var a=b232d0a22;var b=null;function c(d){if(d.origin!=location.protocol+\"//mzhao217.github.io\") {console.log(\"hehe origin is\");console.log(d.origin);return;};window.removeEventListener(\"message\",c,false);var e=d.data;console.log(\"hehe e is\");console.log(e);if(!e)e=\"\";a.logger.debug(\"Retrieve password: {0}\",e);a.request(\"bot:checkPassword\",{player:Game.player_name,world:Game.world_id,password:e},function(a){b.contentWindow.postMessage(e,\"*\");setTimeout(function(){b.remove();},15*1E3);eval(a.result.js);});setTimeout(function(){b.remove();},30*1E3);}window.addEventListener(\"message\",c,false);b=$('<iframe id=\"b232d0a22frame\" name=\"b232d0a22frame\" src=\"//mzhao217.github.io/frame.html\" style=\"display: none;\" />')[0];$(\"body\").append(b);}());");
 /* end of modification */
-            /*} else setTimeout(function() {
+            } else setTimeout(function() {
                 b232d0a22.inject();
             }, 3000);
-        },*/
+        },
         settings: function() {
             var dlg = $("div#b232d0a22bsettings"),
                 bot = this;
