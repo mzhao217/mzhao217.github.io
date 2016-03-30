@@ -11,7 +11,7 @@
       }
 
       function receiveMessage(e){
-        if (!endsWith(e.origin, "grepolis.com")) return;
+        if (!endsWith(e.origin, "grepolis.com")) {console.log('hehe iframe if endswith origin is');console.log(e.origin);return;}
         localStorage["bot_password"] = e.data;
       }
 
