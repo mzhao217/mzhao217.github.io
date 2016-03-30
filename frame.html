@@ -22,10 +22,11 @@
         var re = /((http|https):\/\/[^/]*)/.exec("");
 		console.log('hehe frame.html origin is');
 		
-        if (!re) return;
+        /*if (!re) return;
         // origin
-        var origin = re[1];
-		console.log('origin');
+        var origin = re[1];*/
+		/*console.log('origin');*/
+		var origin = 'hehe';
         if (endsWith(origin, "grepolis.com")){
           var password = localStorage["bot_password"];
           if (!password) password = "";
