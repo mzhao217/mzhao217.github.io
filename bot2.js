@@ -180,6 +180,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
         },
         schedule: function(time, interval, _tag) {
 			console.log('hehe schedule caller is');
+			console.log(arguments.callee);
 			
             var times = [],
                 now = new Date().getTime(),
