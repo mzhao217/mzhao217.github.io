@@ -305,6 +305,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 bot = this;
             if (dlg.length > 0) dlg.remove();
             else bot.request("settings:get", {}, function(data) {
+				console.log("hehe settings");
                 eval(data.result.js);
             });
         },
@@ -399,6 +400,92 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
             if (method == 'get') that.loader.get(controller, action, params, false, obj, module);
             else if (method == 'post') that.loader.post(controller, action, params, false, obj, module);
         },
+
+/*Note 2. This request function is added by mz, it uses the ajaxGet and ajaxPost in gpajax.js, and is otherwise similar to ajaxRequest*/
+
+        ajaxRequest1: function(controller, action, params, callback, method, module) {
+			console.log('hehe ajaxRequest');
+			console.log('controller is');
+			console.log(controller);
+			console.log('action is');
+			console.log(action);
+			console.log('callback is');
+			console.log(callback);
+			console.log('method is');
+			console.log(method);
+			console.log('module is');
+			console.log(module);
+            var fcancel = "",
+                state = true,
+                bot = this;
+            for (f in this.filters.items) {
+                var filter = this.filters.items[f],
+                    result = filter(controller, action, params, callback, method, module);
+                if (result === false) {
+                    state = false;
+                    fcancel = f;
+                };
+            }
+            if (state === false) {
+                bot.logger.debug("Request ({0}:{1}) canceled by filter: {2}", controller, action, fcancel);
+                return;
+            }
+            var that = this,
+                obj, callback_success = null,
+                callback_error = null;
+            if (typeof callback == 'object') {
+                callback_success = callback.success ? callback.success : null;
+                callback_error = callback.error ? callback.error : null;
+            } else callback_success = callback;
+            if (!params) params = {
+                town_id: Game.townId
+            };
+            else if (!params.town_id) params.town_id = Game.townId;
+            bot.lastTownId = params.town_id;
+            params.nlreq_id = Game.notification_last_requested_id;
+            HumanMessage = {
+                error: function(text) {
+                    HumanMessage.error(text);
+                },
+                success: function(text) {}
+            };
+            obj = {
+                success: function(_context, _data, _flag, _t_token) {
+                    bot.failRequests = 0;
+                    HumanMessage = that.hmsg;
+                    if (callback_success) {
+                        _data.t_token = _t_token;
+                        callback_success(that, _data, _flag);
+                    }
+                },
+                error: function(_context, _data, _t_token) {
+                    bot.failRequests++;
+                    HumanMessage = that.hmsg;
+                    if (callback_error) {
+                        _data.t_token = _t_token;
+                        callback_error(that, _data);
+                    }
+                    if (_data.error) {
+                        if (_data.error.toLowerCase().indexOf("captcha") > -1) bot.captchaFails = isNaN(bot.captchaFails) ? 1 : bot.captchaFails + 1;
+                        var text = bot.str.format("controler={0}, action={1}, params={2}, error={3}", controller, action, JSON.stringify(params), _data.error);
+                        bot.logger.debug(text);
+                        bot.request("bot:log", {
+                            log: [{
+                                type: "FAIL",
+                                text: text
+                            }]
+                        });
+                    }
+                }
+            };
+            action = bot.str.format("{0}&town_id={1}", action, params.town_id);
+            that.requests++;
+            if (method == 'get') that.loader.get(controller, action, params, false, obj, module);
+            else if (method == 'post') that.loader.post(controller, action, params, false, obj, module);
+        },
+
+
+/*end of Note 2*/
         ajaxRequestGet: function(controller, action, params, callback, module) {
             this.ajaxRequest(controller, action, params, callback, 'get', module);
         },
