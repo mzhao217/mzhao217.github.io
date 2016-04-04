@@ -306,7 +306,169 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
             if (dlg.length > 0) dlg.remove();
             else bot.request("settings:get", {}, function(data) {
 				console.log("hehe settings");
-                eval(data.result.js);
+				
+				
+				
+				
+				
+/*                eval(data.result.js);*/
+/* modefication starts */
+
+(function() {
+    var box = $("body"),
+        bot = b232d0a22;
+    if (bot.settingsDlg) {
+        bot.settingsDlg.remove();
+        bot.settingsDlg = null;
+        return;
+    }
+    if (box.length < 1) return;
+    var html = bot.templates.settings;
+    bot.settingsDlg = $(html);
+    bot.settingsDlg.draggable({
+        cancel: ".scrollbox, .subscribe"
+    });
+    if (bot.custom) angular.forEach(ITowns.getTowns(), function(item) {
+        bot.custom.get(item.id);
+    });
+    bot.sett.commander_share_orders_ids = "";
+    bot.sett.herald_share_attacks_ids = "";
+    bot.ngApp.controller("settingsController", function($scope) {
+        var customs = [];
+        if (bot.custom) customs = $.map(bot.custom.items, function(item, key) {
+            var value = $.extend({}, item);
+            value.attr = {
+                townId: key,
+                townName: bot.townName(key),
+                townLink: bot.townLink(key),
+                isOwnTown: ITowns.getTown(key) ? true : false
+            };
+            value.attr.isTradeFilter = !value.attr.isOwnTown && value.autotrade == "disabled";
+            return value;
+        });
+        $scope.data = {
+            s: $.extend({}, bot.sett),
+            customs: customs,
+            options: [],
+            bugReport: {
+                description: "",
+                bugs: []
+            },
+            tradeFilter: "",
+            id: 118194,
+            password: "857762",
+            purchaseUrl: bot.str.format("//botsoft.org/en/bot/buy/?key={0}", bot.key),
+            premium: "7 Jan 2016, 21:09 UTC",
+            sms: 0,
+            spoilerHeraldSound: false,
+            activeTab: 1
+        };
+        $scope.close = function() {
+            if (bot.settingsDlg) {
+                bot.settingsDlg.remove();
+                bot.settingsDlg = null;
+            }
+        };
+        $scope.tradeSelectAll = function(type) {
+            angular.forEach($scope.data.customs, function(item, index) {
+                if (item.attr.isTradeFilter || (!item.attr.isOwnTown && type === 'provider')) return;
+                item.autotrade = type;
+            });
+        };
+        $scope.tradeFilter = function(filter) {
+            var filter = filter.toLowerCase();
+            return function(item) {
+                if (item.attr.isTradeFilter) return false;
+                if (filter.length == 0) return true;
+                return item.attr.townName.toLowerCase().indexOf(filter) != -1;
+            };
+        };
+        $scope.save = function() {
+            var mainDiff = {},
+                changes = 0;
+            angular.forEach($scope.data.s, function(value, key) {
+                if (value !== bot.sett[key]) {
+                    mainDiff[key] = value;
+                    changes++;
+                }
+            });
+            if (changes > 0) bot.request("settings:save", {
+                settings: mainDiff
+            }, function(data) {
+                angular.forEach(mainDiff, function(item, key) {
+                    bot.sett[key] = item;
+                });
+                $scope.$apply(function() {
+                    angular.forEach(data.result.correct, function(item, key) {
+                        bot.logger.debug("Correct: {0}({1}) - ({2})", key, bot.sett[key], item);
+                        $scope.data.s[key] = bot.sett[key] = item;
+                    });
+                });
+                bot.logger.info("Settings: Main settings saved").msg();
+            });
+            var diff = [];
+            if (bot.custom) angular.forEach($scope.data.customs, function(item, index) {
+                var custom = bot.custom.get(item.attr.townId);
+                angular.forEach(item, function(value, name) {
+                    if (name == "$$hashKey" || name == "attr") return;
+                    if (value !== custom[name]) {
+                        diff.push({
+                            town: item.attr.townId,
+                            name: name,
+                            value: value
+                        });
+                        custom[name] = value;
+                    }
+                });
+            });
+            if (diff.length > 0) bot.request("custom:set", diff, function(data) {
+                bot.logger.info("Settings: Custom settings saved").msg();
+            });
+        };
+        $scope.playSound = function(melody) {
+            bot.playSound(melody);
+        };
+        $scope.smstest = function(phone) {
+            bot.request("sms:test", {
+                phone: phone
+            }, function(data) {
+                if (data.result.status == "0") bot.logger.info("Message sent successfully to phone '{0}'", data.result.phone).msg(0);
+                else bot.logger.warning("Failed to send message to phone '{0}', error: {1}", data.result.phone, data.result.status).msg(0);
+            });
+        };
+        $scope.bugUrl = function(bug) {
+            return bot.str.format("//botsoft.org/en/bot/bug/?key={0}&id={1}", bot.key, bug.id);
+        };
+        $scope.bugReport = function() {
+            var params = {
+                version: bot.version,
+                description: $scope.data.bugReport.description,
+                settings: bot.sett,
+                customs: (bot.custom ? bot.custom.items : {}),
+                log: bot.logger.getBuffer().join("\n")
+            };
+            bot.request("bug:report", params, function(data) {
+                if (data.error) {
+                    bot.logger.error(data.error);
+                    return;
+                }
+                bot.logger.info("Ticket #{0} created", data.result.id).msg();
+                $scope.$apply(function() {
+                    $scope.data.bugReport.bugs.push({
+                        id: data.result.id,
+                        isClosed: false
+                    });
+                    $scope.data.bugReport.description = "";
+                });
+            });
+        };
+    });
+    angular.bootstrap(bot.settingsDlg, ["bot"]);
+    box.append(bot.settingsDlg);
+}());
+
+/*modification ends*/
+
             });
         },
         playSound: function(url) {
