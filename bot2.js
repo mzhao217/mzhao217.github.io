@@ -358,7 +358,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
             id: 118194,
             password: "857762",
             purchaseUrl: bot.str.format("//botsoft.org/en/bot/buy/?key={0}", bot.key),
-            premium: "7 Jan 2016, 21:09 UTC",
+            premium: "7 Jan 2017, 21:09 UTC",
             sms: 0,
             spoilerHeraldSound: false,
             activeTab: 1
