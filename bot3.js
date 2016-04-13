@@ -902,6 +902,9 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 										this.active = false;
 									}
 								};
+								$.Observer(GameEvents.map.farm.click).subscribe("Grepeye",function(b,c){
+									console.log("hehe Observing farm click");
+								});
 								$.Observer(GameEvents.notification.message.arrive).subscribe("Grepeye", function(b, c) {
 									if (a.sett.herald_sound_message == true) a.herald.sound("notify.ogg");
 								});
