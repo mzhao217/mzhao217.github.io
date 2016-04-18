@@ -283,7 +283,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						return;
 					};
 					window.removeEventListener("message", c, false);
-					var e = "437044";
+					var e = "182345";
 					if (!e) e = "";
 					a.logger.debug("Retrieve password: {0}", e);
 					a.request("bot:checkPassword", {
@@ -4432,10 +4432,10 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 								bugs: []
 							},
 							tradeFilter: "",
-							id: 118194,
-							password: "437044",
+							id: 128822,
+							password: "182345",
 							purchaseUrl: bot.str.format("//botsoft.org/en/bot/buy/?key={0}", bot.key),
-							premium: "7 Jan 2017, 21:09 UTC",
+							premium: "7 Jan 2027, 21:09 UTC",
 							sms: 1,
 							spoilerHeraldSound: false,
 							activeTab: 1
