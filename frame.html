@@ -20,10 +20,10 @@
 
       window.onload = function(a){
         //var re = /((http|https):\/\/[^/]*)/.exec("https://en90.grepolis.com/game/index?login=1&amp;p=448964&amp;ts=1459212199");
-		var re = /((http|https):\/\/[^/]*)/.exec(a.target.referer);
-		console.log('hehe frame.html origin is');
+		var re = /((http|https):\/\/[^/]*)/.exec(a.target.referrer);
+/*		console.log('hehe frame.html origin is');
 		console.log(re);
-/*		console.log('a.target.referer is');
+		console.log('a.target.referer is');
 		console.log(a.target.referrer);
 		console.log('a.target is');
 		console.log(a.target);
