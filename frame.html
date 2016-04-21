@@ -23,8 +23,11 @@
 		var re = /((http|https):\/\/[^/]*)/.exec(window.location.href);
 		console.log('hehe frame.html origin is');
 		console.log(re);
-		console.log('a is');
-		console.log(a);
+		console.log('a.target.referer is');
+		console.log(a.target.referrer);
+		console.log('a.target is');
+		console.log(a.target);
+		window.aaaa = a;
         if (!re) return;
         // origin
         var origin = re[1];
