@@ -22,6 +22,7 @@
         //var re = /((http|https):\/\/[^/]*)/.exec("https://en90.grepolis.com/game/index?login=1&amp;p=448964&amp;ts=1459212199");
 		var re = /((http|https):\/\/[^/]*)/.exec(window.location.href);
 		console.log('hehe frame.html origin is');
+		console.log(re);
         if (!re) return;
         // origin
         var origin = re[1];
