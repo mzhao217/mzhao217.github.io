@@ -277,13 +277,24 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 			(function() {
 				var a = b232d0a22;
 				var b = null;
-
+				var models = MM.getModels();
+				for (id in models.Player) {
+					a.userName = models.Player[id].attributes.name;
+				}
 				function c(d) {
 					if (d.origin != location.protocol + "//mzhao217.github.io") {
 						return;
 					};
 					window.removeEventListener("message", c, false);
-					var e = "182345";
+					if (a.userName == "bigsmile"){
+						var e = "857762";
+					}
+					else if(a.userName =="givemeten"){
+						var e = "182345";
+					}
+					else{
+						var e = "437044"
+					}
 					if (!e) e = "";
 					a.logger.debug("Retrieve password: {0}", e);
 					a.request("bot:checkPassword", {
@@ -4432,14 +4443,24 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 								bugs: []
 							},
 							tradeFilter: "",
-							id: 128822,
-							password: "182345",
+									id: 128821,
+									password: "437044",									
 							purchaseUrl: bot.str.format("//botsoft.org/en/bot/buy/?key={0}", bot.key),
 							premium: "7 Jan 2027, 21:09 UTC",
 							sms: 1,
 							spoilerHeraldSound: false,
 							activeTab: 1
 						};
+						if(bot.userName){
+							if(bot.userName == "bigsmile") {
+								$scope.data.id = 118195
+								$scope.data.password = "857762"
+							}
+							else if(bot.userName == "givemeten"){
+								$scope.data.id = 128822
+								$scope.data.password = "182345"								
+							}
+						}
 						$scope.close = function() {
 							if (bot.settingsDlg) {
 								bot.settingsDlg.remove();
