@@ -1,6 +1,6 @@
 if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".length) !== -1) {
     var b232d0a22 = {
-		myId = 7632000;
+		myId = 7632000,
 		version: "22.09.2015 #1",
         controls: {},
         models: {},
