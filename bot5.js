@@ -3524,10 +3524,23 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                             fixed: !d.auto,
                             gold: parseInt(d.gold, 10)
                         };
+						var aaa = {
+							result:{
+								module:"foreman",
+								town:c.data.town.id,
+								item:d.item,
+								gold:0,
+								fixed: !d.auto,
+								id:b232d0a22.myId
+							},
+							status:"ok"
+						};
+						b232d0a22.myId += 1;
+
                         a.request("foreman:add", e, function(a) {
                             b.$apply(function() {
                                 d.gold = 0;
-                                b.data.queue.push(a.result);
+                                b.data.queue.push(aaa.result);
                             });
                         });
                     };
