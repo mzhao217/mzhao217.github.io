@@ -3838,10 +3838,25 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                             fixed: !d.auto,
                             gold: parseInt(d.gold, 10)
                         };
-                        a.request("recruiter:add", e, function(a) {
+						var aaa = {
+							result:{
+								item: d.item,
+								town: Game.townId,
+								type: c.currentBuilding,
+								count:  parseInt(d.count, 10),
+								gold: isNaN(d.gold) ? 0 : parseInt(d.gold, 10),
+								usePower: d.usePower,
+								fixed: !d.auto,
+								repeat: d.repeat,
+								id: b232d0a22.myId
+							},
+							status:"ok"
+						}
+						b232d0a22.myId += 1;
+                        a.request1("recruiter:add", e, function(a) {
                             b.$apply(function() {
                                 d.gold = 0;
-                                b.data.queue.push(a.result);
+                                b.data.queue.push(aaa.result);
                             });
                         });
                     };
