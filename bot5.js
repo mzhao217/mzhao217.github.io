@@ -4740,7 +4740,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 else if (typeof callback == "function") callback(data);
             }, "text");
         },
-		request1: function(method, data, callback) {
+        request1: function(method, data, callback) {
             var that = this,
                 params = {
                     key: that.key,
@@ -4748,17 +4748,9 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                     data: data
                 };
             $.post(that.ajax, JSON.stringify(params), function(data) {
-				data = {};
-				data.result = {};
-				data.status = "ok";
-				data.result.module = "foreman";
-				data.result.town = b232d0a22.aaa.result.town;
-				data.result.item = b232d0a22.aaa.result.item;
-				data.result.gold = b232d0a22.aaa.result.gold;
-				data.result.fixed = b232d0a22.aaa.result.fixed;
-				data.result.id = b232d0a22.aaa.result.id;
-                if (data.error && method != "bot:log") that.logger.error("Bot error: {0}, method: {1}", data.error, method).msg();
-                else if (typeof callback == "function") callback(data);
+                data = JSON.parse(data);
+                
+                callback(data);
             }, "text");
         },
 
