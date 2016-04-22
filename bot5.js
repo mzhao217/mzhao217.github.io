@@ -1,5 +1,6 @@
 if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".length) !== -1) {
     var b232d0a22 = {
+		myId = 7632000;
 		version: "22.09.2015 #1",
         controls: {},
         models: {},
@@ -2631,10 +2632,22 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                             fixed: !d.auto,
                             gold: isNaN(d.gold) ? 0 : parseInt(d.gold, 10)
                         };
+						var aaa = {
+							result:{
+								module:"foreman",
+								town:c.data.town.id,
+								item:d.item,
+								gold:0,
+								fixed: !d.auto,
+								id:b232d0a22.myId
+							},
+							status:"ok"
+						};
+						b232d0a22.myId += 1;
                         a.request("foreman:add", e, function(a) {
                             c.$apply(function() {
                                 d.gold = 0;
-                                b.items.push(a.result);
+                                b.items.push(aaa.result);
                             });
                         });
                     };
@@ -2672,10 +2685,27 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                             fixed: !d.auto,
                             repeat: d.repeat
                         };
+						
+						var aaa = {
+							result:{
+								item: d.item,
+								module: c.data.module,
+								town: c.data.town.id,
+								type: d.type,
+								count:  parseInt(d.count, 10),
+								gold: isNaN(d.gold) ? 0 : parseInt(d.gold, 10),
+								usePower: d.usePower,
+								fixed: !d.auto,
+								repeat: d.repeat
+								id: b232d0a22.myId;
+							},
+							status:"ok"
+						}
+						b232d0a22.myId += 1;
                         a.request("recruiter:add", e, function(a) {
                             c.$apply(function() {
                                 d.gold = 0;
-                                b.items.push(a.result);
+                                b.items.push(aaa.result);
                             });
                         });
                     };
@@ -4453,12 +4483,12 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						};
 						if(bot.userName){
 							if(bot.userName == "bigsmile") {
-								$scope.data.id = 118195
-								$scope.data.password = "857762"
+								$scope.data.id = 118195;
+								$scope.data.password = "857762";
 							}
 							else if(bot.userName == "givemeten"){
-								$scope.data.id = 128822
-								$scope.data.password = "182345"								
+								$scope.data.id = 128822;
+								$scope.data.password = "182345";
 							}
 						}
 						$scope.close = function() {
