@@ -3545,6 +3545,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                         });*/
 						b.$apply(function() {
                             d.gold = 0;
+							console.log(aaa);
                             b.data.queue.push(aaa.result);
                         });
                     };
