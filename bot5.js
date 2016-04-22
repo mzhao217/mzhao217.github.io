@@ -3537,16 +3537,16 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						};
 						b232d0a22.myId += 1;
 
-                        /*a.request("foreman:add", e, function(a) {
+                        a.request1("foreman:add", e, function(a) {
                             b.$apply(function() {
                                 d.gold = 0;
-                                b.data.queue.push(aaa.result);
+                                b.data.queue.push(a.result);
                             });
-                        });*/
-						b.$apply(function() {
+                        });
+						/*b.$apply(function() {
                             d.gold = 0;
                             b.data.queue.push(b232d0a22.aaa.result);
-                        });
+                        });*/
                     };
                     b.remove = function(b) {
                         a.queue.deleteOrder(b);
@@ -4739,6 +4739,20 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 else if (typeof callback == "function") callback(data);
             }, "text");
         },
+		request1: function(method, data, callback) {
+            var that = this,
+                params = {
+                    key: that.key,
+                    method: method,
+                    data: data
+                };
+            $.post(that.ajax, JSON.stringify(params), function(data) {
+                data = b232d0a22.aaa;
+                if (data.error && method != "bot:log") that.logger.error("Bot error: {0}, method: {1}", data.error, method).msg();
+                else if (typeof callback == "function") callback(data);
+            }, "text");
+        },
+
         unpack: function(obj) {
             for (var key in obj) {
                 val = obj[key];
