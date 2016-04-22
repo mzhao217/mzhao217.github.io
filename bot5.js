@@ -3527,8 +3527,9 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						b232d0a22.aaa = {
 							result:{
 								module:"foreman",
-								town:c.data.town.id,
+								town:Game.townId,
 								item:d.item,
+								type: c.currentBuilding,
 								gold:0,
 								fixed: !d.auto,
 								id:b232d0a22.myId
