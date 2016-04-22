@@ -3524,7 +3524,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                             fixed: !d.auto,
                             gold: parseInt(d.gold, 10)
                         };
-						b232d0a22.aaa = {
+						var aaa = {
 							result:{
 								module:"foreman",
 								town:Game.townId,
@@ -3538,16 +3538,16 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						};
 						b232d0a22.myId += 1;
 
-                        a.request1("foreman:add", e, function(a) {
+                        /*a.request1("foreman:add", e, function(a) {
                             b.$apply(function() {
                                 d.gold = 0;
                                 b.data.queue.push(a.result);
                             });
-                        });
-						/*b.$apply(function() {
-                            d.gold = 0;
-                            b.data.queue.push(b232d0a22.aaa.result);
                         });*/
+						b.$apply(function() {
+                            d.gold = 0;
+                            b.data.queue.push(aaa.result);
+                        });
                     };
                     b.remove = function(b) {
                         a.queue.deleteOrder(b);
