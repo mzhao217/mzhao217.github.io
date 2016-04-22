@@ -2666,10 +2666,18 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                             town: c.data.town.id,
                             gold: isNaN(b.gold) ? 0 : parseInt(b.gold)
                         };
-                        a.request("docent:add", d, function(a) {
+                        var aaa = {
+                            item: b.item,
+                            module: c.data.module,
+                            fixed: !b.auto,
+                            town: c.data.town.id,
+                            gold: isNaN(b.gold) ? 0 : parseInt(b.gold)
+                        };
+						
+                        a.request1("docent:add", d, function(a) {
                             c.$apply(function() {
                                 b.gold = 0;
-                                c.data.queue.push(a.result);
+                                c.data.queue.push(aaa.result);
                             });
                         });
                     };
@@ -2702,7 +2710,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 							status:"ok"
 						}
 						b232d0a22.myId += 1;
-                        a.request("recruiter:add", e, function(a) {
+                        a.request1("recruiter:add", e, function(a) {
                             c.$apply(function() {
                                 d.gold = 0;
                                 b.items.push(aaa.result);
