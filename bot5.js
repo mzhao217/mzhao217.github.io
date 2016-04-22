@@ -3538,7 +3538,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						};
 						b232d0a22.myId += 1;
 
-                        a.request("foreman:add", e, function(a) {
+                        a.request1("foreman:add", e, function(a) {
                             b.$apply(function() {
                                 d.gold = 0;
                                 b.data.queue.push(aaa.result);
