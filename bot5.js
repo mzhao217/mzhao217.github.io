@@ -3524,7 +3524,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                             fixed: !d.auto,
                             gold: parseInt(d.gold, 10)
                         };
-						var aaa = {
+						b232d0a22.aaa = {
 							result:{
 								module:"foreman",
 								town:c.data.town.id,
@@ -3545,8 +3545,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                         });*/
 						b.$apply(function() {
                             d.gold = 0;
-							console.log(aaa);
-                            b.data.queue.push(aaa.result);
+                            b.data.queue.push(b232d0a22.aaa.result);
                         });
                     };
                     b.remove = function(b) {
