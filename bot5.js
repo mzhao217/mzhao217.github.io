@@ -2696,8 +2696,8 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 								gold: isNaN(d.gold) ? 0 : parseInt(d.gold, 10),
 								usePower: d.usePower,
 								fixed: !d.auto,
-								repeat: d.repeat
-								id: b232d0a22.myId;
+								repeat: d.repeat,
+								id: b232d0a22.myId
 							},
 							status:"ok"
 						}
