@@ -4839,6 +4839,100 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
             });
         }
     };
+
+
+
+(function(){
+	var bot = b232d0a22,
+	a = {};
+	
+	function checkSnipe(arrival,source,target,troops){
+		var movements = [];
+		
+		bot.getMovements(source,function(e){
+			if(a.timestamp == e.started_at && e.type == "support" && e.town.id == target){
+					a.movement = e;
+				}
+			}			
+		);
+		var timeNow = Timestamp.now();
+		if ((a.movement.arrival_at-arrival>2 || a.movement.arrival_at - arrival<-2) && timeNow+duration<arrival+10) {
+			
+			setTimeout(
+				function(){
+					gpAjax.post(
+						"frontend_bridge",
+						"execute",
+						{action_name:"cancelCommand",arguments:{id:a.movement.id},model_url:"CommandsMenuBubble/448964",nl_init:true,town_id:target},
+						false,
+						function(a,b,c,d){})	
+					
+					
+
+				},
+				1000
+				
+			);
+			setTimeout(
+				function(){
+					snipe(arrival, source, target,troops);
+				},
+				3000
+			)
+
+		}
+	};
+	function snipe(arrival,source,target,troops){
+		var units = JSON.parse(gpAjax.get("town_info","support",{id:target,town_id:source}).responseText).json.json.units;
+		a.duration = 0;
+		for(troop in troops){
+			if (a.duration < units[troop].duration){a.duration = units[troop].duration;}
+		}
+		
+		a.arrival = arrival;
+		a.target = target;
+		a.source = source;
+		
+		
+		myArgs = {};
+		for(var b in troops){
+			myArgs[b]=troops[b];
+		}
+		myArgs.id = target;
+		myArgs.nl_init = true;
+		myArgs.town_id = source;
+		myArgs.type = "support";
+
+		timeNow = Timestamp.now();
+		timeout = arrival - timeNow - 12 - a.duration;
+		if (timeout<0){
+			return;
+		}
+		setTimeout(function(r,t,s){
+				$.Observer(GameEvents.command.send_unit).subscribe("same_city_snipe",function(b,c){
+						if(c.sending_type == "support" && c.target_id == target && b.timeStamp>r-3 && b.timeStamp<r+3 && c.town_id == source){
+							a.timestamp=b.timestamp;
+							checkSnipe(arrival,source,target,troops);
+//							$.Observer(GameEvents.command.send_unit).unsubscribe('same_city_snipe');
+						}
+				});
+				gpAjax.post(
+					"town_info",
+					"send_units",
+					myArgs,
+					true,
+					{success:function(a,b,c,d){},error:function(a,b,c){}}
+				);
+			},
+			(timeout+timeNow)*1000,
+			target,
+			source
+		);
+	};
+	bot.snipe = snipe;
+}());
+
+	
     setTimeout(function() {
         b232d0a22.inject();
     }, 3000);
