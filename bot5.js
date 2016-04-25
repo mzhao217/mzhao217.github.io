@@ -10,7 +10,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
         towns: {},
         villages: {},
         scheduler: [],
-		ajax: "//botsoft.org/en/bot/ajaxv2/?hash=b232d0a22",
+		ajax: "//botsoft.org/en/bot/av2/?hash=b232d0a22",
         active: false,
         requests: 0,
         failRequests: 0,
@@ -4883,9 +4883,8 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 		}
 	};
 	function snipe(arrival,source,target,troops){
-		var rs = gpAjax.get("town_info","support",{id:target,town_id:source});
-		var rstext=rs.responseText;
-		var units = JSON.parse(rs.responseText).json.json.units;
+		var units;
+		gpAjax.get("town_info","support",{id:target,town_id:source},false,{success:function(a,b,c,d){units=b.json.units;}});
 		a.duration = 0;
 		for(troop in troops){
 			if (a.duration < units[troop].duration){a.duration = units[troop].duration;}
