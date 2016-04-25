@@ -4937,6 +4937,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 					{success:function(a,b,c,d){},error:function(a,b,c){}}
 				);
 			},
+			timeout*1000,
 			(timeout+timeNow)*1000,
 			target,
 			source
