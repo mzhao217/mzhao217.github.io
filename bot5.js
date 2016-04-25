@@ -4889,7 +4889,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 			{id:target,town_id:source},
 			false,
 			{
-				success:function(a,b,c,d){
+				success:function(e,b,c,d){
 						a.units=b.json.units;
 						snipe(arrival,source,target,troops)
 				}
