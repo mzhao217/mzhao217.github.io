@@ -4944,7 +4944,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 			source
 		);
 	};
-	bot.snipe = snipe;
+	bot.initSnipe = initSnipe;
 }());
 
 	
