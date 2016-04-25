@@ -4890,10 +4890,8 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 			false,
 			{
 				success:function(a,b,c,d){
-					if (b.readyState == 4){
 						a.units=b.json.units;
 						snipe(arrival,source,target,troops)
-					}
 				}
 			}
 		);
