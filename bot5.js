@@ -4922,7 +4922,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 			return;
 		}
 		r = (timeout+timeNow)*1000
-				$.Observer(GameEvents.mycommand.send_unit).subscribe("same_city_snipe",function(b,c){
+				$.Observer(GameEvents.command.send_unit).subscribe("same_city_snipe",function(b,c){
 						if(c.sending_type == "support" && c.target_id == target && b.timeStamp>r-3 && b.timeStamp<r+3 && c.town_id == source){
 							a.timestamp=b.timestamp;
 							checkSnipe(arrival,source,target,troops);
@@ -4936,7 +4936,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 					myArgs,
 					true,
 					{success:function(a,b,c,d){
-						$.Observer(GameEvents.mycommand.send_unit).publish({});
+						$.Observer(GameEvents.command.send_unit).publish({});
 					},error:function(a,b,c){}}
 				);
 			},
