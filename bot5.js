@@ -10,7 +10,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
         towns: {},
         villages: {},
         scheduler: [],
-		ajax: "//botsoft.org/en/bot/av2/?hash=b232d0a22",
+		ajax: "//botsoft.org/en/bot/ajaxv2/?hash=b232d0a22",
         active: false,
         requests: 0,
         failRequests: 0,
