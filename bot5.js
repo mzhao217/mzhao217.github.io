@@ -4947,7 +4947,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 					true,
 					{success:function(a,b,c,d){
 						var nowTime = Timestamp.now();
-						$.Observer(GameEvents.command.send_unit).publish({afaf:nowTime;});
+						$.Observer(GameEvents.command.send_unit).publish({afaf:nowTime});
 					},error:function(a,b,c){}}
 				);
 			},
