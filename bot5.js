@@ -4882,11 +4882,26 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 
 		}
 	};
+	function initSnipe(arrival,source,target,troops){
+		gpAjax.get(
+			"town_info",
+			"support",
+			{id:target,town_id:source},
+			false,
+			{
+				success:function(a,b,c,d){
+					if (b.readyState == 4){
+						a.units=b.json.units;
+						snipe(arrival,source,target,troops)
+					}
+				}
+			}
+		);
+	};
 	function snipe(arrival,source,target,troops){
-		gpAjax.get("town_info","support",{id:target,town_id:source},false,{success:function(a,b,c,d){window.units=b;}});
 		a.duration = 0;
 		for(troop in troops){
-			if (a.duration < units[troop].duration){a.duration = units[troop].duration;}
+			if (a.duration < a.units[troop].duration){a.duration = a.units[troop].duration;}
 		}
 		
 		a.arrival = arrival;
