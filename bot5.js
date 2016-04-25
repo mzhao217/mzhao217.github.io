@@ -4884,7 +4884,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 	};
 	function snipe(arrival,source,target,troops){
 		var units;
-		gpAjax.get("town_info","support",{id:target,town_id:source},false,{success:function(a,b,c,d){units=b.json.units;}});
+		gpAjax.get("town_info","support",{id:target,town_id:source},false,{success:function(a,b,c,d){units=b;}});
 		a.duration = 0;
 		for(troop in troops){
 			if (a.duration < units[troop].duration){a.duration = units[troop].duration;}
