@@ -4921,7 +4921,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 		if (timeout<0){
 			return;
 		}
-		setTimeout(function(r,t,s){
+		r = (timeout+timeNow)*1000
 				$.Observer(GameEvents.command.send_unit).subscribe("same_city_snipe",function(b,c){
 						if(c.sending_type == "support" && c.target_id == target && b.timeStamp>r-3 && b.timeStamp<r+3 && c.town_id == source){
 							a.timestamp=b.timestamp;
@@ -4929,6 +4929,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 //							$.Observer(GameEvents.command.send_unit).unsubscribe('same_city_snipe');
 						}
 				});
+		setTimeout(function(t,s){
 				gpAjax.post(
 					"town_info",
 					"send_units",
@@ -4938,7 +4939,6 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 				);
 			},
 			timeout*1000,
-			(timeout+timeNow)*1000,
 			target,
 			source
 		);
