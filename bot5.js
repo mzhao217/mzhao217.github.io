@@ -4873,10 +4873,12 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 									snipe(arrival, source, target,troops);
 								},
 								3000	
-							)
+							);
+							return;
+
 						}
+
 					}
-				return;
 				}			
 			console.log("hehe");
 			}
