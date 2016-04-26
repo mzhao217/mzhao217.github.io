@@ -4881,6 +4881,16 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 		);
 	};
 	function initSnipe(arrival,source,target,troops){
+		$.Observer(GameEvents.command.send_unit).unsubscribe("same_city_snipe");
+		$.Observer(GameEvents.command.send_unit).subscribe("same_city_snipe",function(b,c){
+				if(c.afaf) {
+					
+				//if(c.sending_type == "support" && c.target_id == target && b.timeStamp>r-3 && b.timeStamp<r+3 && c.town_id == source){
+					a.timestamp=c.afaf;
+					checkSnipe(arrival,source,target,troops);
+//					$.Observer(GameEvents.command.send_unit).unsubscribe('same_city_snipe');
+				}
+			});
 		gpAjax.get(
 			"town_info",
 			"support",
@@ -4918,28 +4928,12 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 		timeout = arrival - timeNow -12 - a.duration;
 		if (timeout<0){
 			if(timeout<-21) {
+				$.Observer(GameEvents.command.send_unit).unsubscribe("same_city_snipe");
 				return;
 			}
 			timeout = 0;
 		}
 		r = (timeout+timeNow)*1000
-				$.Observer(GameEvents.command.send_unit).subscribe("same_city_snipe",function(b,c){
-						if(c.afaf) {
-							
-						//if(c.sending_type == "support" && c.target_id == target && b.timeStamp>r-3 && b.timeStamp<r+3 && c.town_id == source){
-							a.timestamp=c.afaf;
-							checkSnipe(arrival,source,target,troops);
-//							$.Observer(GameEvents.command.send_unit).unsubscribe('same_city_snipe');
-						}
-						if(b.afaf) {
-							
-						//if(c.sending_type == "support" && c.target_id == target && b.timeStamp>r-3 && b.timeStamp<r+3 && c.town_id == source){
-							a.timestamp=b.afaf;
-							checkSnipe(arrival,source,target,troops);
-//							$.Observer(GameEvents.command.send_unit).unsubscribe('same_city_snipe');
-						}
-
-				});
 		setTimeout(function(t,s){
 				gpAjax.post(
 					"town_info",
