@@ -4926,14 +4926,14 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						if(c.afaf) {
 							
 						//if(c.sending_type == "support" && c.target_id == target && b.timeStamp>r-3 && b.timeStamp<r+3 && c.town_id == source){
-							a.timestamp=c.timestamp;
+							a.timestamp=c.afaf;
 							checkSnipe(arrival,source,target,troops);
 //							$.Observer(GameEvents.command.send_unit).unsubscribe('same_city_snipe');
 						}
 						if(b.afaf) {
 							
 						//if(c.sending_type == "support" && c.target_id == target && b.timeStamp>r-3 && b.timeStamp<r+3 && c.town_id == source){
-							a.timestamp=c.timestamp;
+							a.timestamp=b.afaf;
 							checkSnipe(arrival,source,target,troops);
 //							$.Observer(GameEvents.command.send_unit).unsubscribe('same_city_snipe');
 						}
