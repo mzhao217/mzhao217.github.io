@@ -4877,7 +4877,9 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						}
 					}
 				}			
+				return;
 			}
+			console.log("hehe");
 		);
 	};
 	function initSnipe(arrival,source,target,troops){
