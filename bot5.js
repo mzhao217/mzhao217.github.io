@@ -4861,7 +4861,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 									gpAjax.post(
 										"frontend_bridge",
 										"execute",
-										{action_name:"cancelCommand",arguments:{id:a.movement.id},model_url:"CommandsMenuBubble/448964",nl_init:true,town_id:target},
+										{action_name:"cancelCommand",arguments:{id:a.movement.id},model_url:"CommandsMenuBubble/448964",nl_init:true,town_id:source},
 										false,
 										function(a,b,c,d){}
 									)	
