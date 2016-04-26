@@ -4850,10 +4850,13 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 		var movements = [];
 		
 		bot.getMovements(source,function(e){
-			if(a.timestamp == e.started_at && e.type == "support" && e.town.id == target){
-					a.movement = e;
-				}
-			}			
+			for(var i = 0;i<e.length;i++){
+				if(a.timestamp == e[i].started_at && e[i].type == "support" && e[i].town.id == target){
+						a.movement = e[i];
+					}
+				}			
+				
+			}
 		);
 		var timeNow = Timestamp.now();
 		if ((a.movement.arrival_at-arrival>2 || a.movement.arrival_at - arrival<-2) && timeNow+duration<arrival+10) {
