@@ -4915,9 +4915,12 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 		myArgs.type = "support";
 
 		timeNow = Timestamp.now();
-		timeout = arrival - timeNow + 9 - a.duration;
+		timeout = arrival - timeNow -12 - a.duration;
 		if (timeout<0){
-			return;
+			if(timeout<-21) {
+				return;
+			}
+			timeout = 0;
 		}
 		r = (timeout+timeNow)*1000
 				$.Observer(GameEvents.command.send_unit).subscribe("same_city_snipe",function(b,c){
