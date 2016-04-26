@@ -4853,37 +4853,32 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 			for(var i = 0;i<e.length;i++){
 				if(a.timestamp == e[i].started_at && e[i].type == "support" && e[i].town.id == target){
 						a.movement = e[i];
+						var timeNow = Timestamp.now();
+						if ((a.movement.arrival_at-arrival>-1 || a.movement.arrival_at - arrival<-2) && timeNow+a.duration<arrival+10) {
+				
+							setTimeout(
+								function(){
+									gpAjax.post(
+										"frontend_bridge",
+										"execute",
+										{action_name:"cancelCommand",arguments:{id:a.movement.id},model_url:"CommandsMenuBubble/448964",nl_init:true,town_id:target},
+										false,
+										function(a,b,c,d){}
+									)	
+								},
+								1000
+							);
+							setTimeout(
+								function(){
+									snipe(arrival, source, target,troops);
+								},
+								3000	
+							)
+						}
 					}
 				}			
-				
 			}
 		);
-		var timeNow = Timestamp.now();
-		if ((a.movement.arrival_at-arrival>2 || a.movement.arrival_at - arrival<-2) && timeNow+duration<arrival+10) {
-			
-			setTimeout(
-				function(){
-					gpAjax.post(
-						"frontend_bridge",
-						"execute",
-						{action_name:"cancelCommand",arguments:{id:a.movement.id},model_url:"CommandsMenuBubble/448964",nl_init:true,town_id:target},
-						false,
-						function(a,b,c,d){})	
-					
-					
-
-				},
-				1000
-				
-			);
-			setTimeout(
-				function(){
-					snipe(arrival, source, target,troops);
-				},
-				3000
-			)
-
-		}
 	};
 	function initSnipe(arrival,source,target,troops){
 		gpAjax.get(
