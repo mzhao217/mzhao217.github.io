@@ -4850,10 +4850,11 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 		var movements = [];
 		
 		bot.getMovements(source,function(e){
+			var timeNow
 			for(var i = 0;i<e.length;i++){
 				if(a.timestamp == e[i].started_at && e[i].type == "support" && e[i].town.id == target){
 						a.movement = e[i];
-						var timeNow = Timestamp.now();
+						timeNow = Timestamp.now();// it seems Timestamp.now() is asychronic.
 						if ((a.movement.arrival_at-arrival>-1 || a.movement.arrival_at - arrival<-2) && timeNow+a.duration<arrival+10) {
 				
 							setTimeout(
