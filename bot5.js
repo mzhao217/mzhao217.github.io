@@ -4855,6 +4855,9 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 				if(a.timestamp == e[i].started_at && e[i].type == "support" && e[i].town.id == target){
 						a.movement = e[i];
 						timeNow1 = Timestamp.now();// it seems Timestamp.now() is asychronic.
+						if(timeNow1==null) {
+							timeNow1 = Math.floor(Date.now()/1000)+6;
+						}
 						if ((a.movement.arrival_at-arrival>-1 || a.movement.arrival_at - arrival<-2) && timeNow+a.duration<arrival+10) {
 				
 							setTimeout(
