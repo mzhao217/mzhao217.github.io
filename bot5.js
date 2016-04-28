@@ -4858,7 +4858,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						if(timeNow1==null) {
 							timeNow1 = Math.floor(Date.now()/1000) - a.timeDiff;
 						}
-						if ((a.movement.arrival_at-arrival>-1 || a.movement.arrival_at - arrival<-2) && timeNow+a.duration<arrival+11) {
+						if ((a.movement.arrival_at-arrival>-1 || a.movement.arrival_at - arrival<-2) && timeNow1+a.duration<arrival+11) {
 				
 							setTimeout(
 								function(){
