@@ -4856,9 +4856,9 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 						a.movement = e[i];
 						timeNow1 = Timestamp.now();// it seems Timestamp.now() is asychronic.
 						if(timeNow1==null) {
-							timeNow1 = Math.floor(Date.now()/1000)+6;
+							timeNow1 = Math.floor(Date.now()/1000) - a.timeDiff;
 						}
-						if ((a.movement.arrival_at-arrival>-1 || a.movement.arrival_at - arrival<-2) && timeNow+a.duration<arrival+10) {
+						if ((a.movement.arrival_at-arrival>-1 || a.movement.arrival_at - arrival<-2) && timeNow+a.duration<arrival+11) {
 				
 							setTimeout(
 								function(){
@@ -4878,7 +4878,6 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 								},
 								3000	
 							);
-							return;
 
 						}
 
@@ -4889,6 +4888,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 		);
 	};
 	function initSnipe(arrival,source,target,troops){
+		a.timeDiff = Math.floor(Date.now()/1000)-Timestamp.now();
 		$.Observer(GameEvents.command.send_unit).unsubscribe("same_city_snipe");
 		$.Observer(GameEvents.command.send_unit).subscribe("same_city_snipe",function(b,c){
 				if(c.afaf) {
