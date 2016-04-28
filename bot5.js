@@ -4878,7 +4878,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 								},
 								3000	
 							);
-
+							return;
 						}
 
 					}
