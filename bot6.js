@@ -425,7 +425,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 								a.panel1.remove();
 								a.panel1 = null;
 							}
-							var myPanel = $('<div class="b232d0a22"></div>'),
+							var myPanel = $('<div class="b232d0a22p free"></div>'),
 								myIcon = $('<img class="my_control" src="//mzhao217.github.io/my_icon.png"/>');
 							a.panel1 = myPanel;
 							$('body').append(myPanel);
