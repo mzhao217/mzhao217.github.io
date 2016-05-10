@@ -4530,7 +4530,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
     //var app1 = angular.module('client',[]);
 				bot.ngApp1.controller('myPanelController',function($scope) {
 				
-					$scope.ws = new WebSocket("ws://localhost:9001/");
+					$scope.ws = new WebSocket("wss://localhost:9001/");
 					$scope.output = function(str) {
 					  var log = document.getElementById("log");
 					  var escaped = str.replace(/&/, "&amp;").replace(/</, "&lt;").
