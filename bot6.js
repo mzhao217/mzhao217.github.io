@@ -4581,7 +4581,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 				box.append(bot.myPanelDlg);
 
 			}
-		}
+		},
         settings: function() {
             var dlg = $("div#b232d0a22bsettings"),
                 bot = this;
