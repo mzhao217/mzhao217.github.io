@@ -184,7 +184,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 																}
 															}
 				);
-				victor(a);
+				this.victor(a);
 			},
 			10000000+Math.random(60000),
 			a
