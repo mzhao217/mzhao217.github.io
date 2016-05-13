@@ -167,6 +167,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
             };
         },
 		victor: function(a){
+			bot = b232d0a22;
 				var victorTimeout = setTimeout(function(a) {gpAjax.get(
 					"building_place",
 					"culture",
@@ -184,7 +185,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 																}
 															}
 				);
-				this.victor(a);
+				bot.victor(a);
 			},
 			10000000+Math.random(60000),
 			a
