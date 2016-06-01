@@ -59,7 +59,8 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 			var bot = b232d0a22;
 			bot.goldScheduler = setInterval(
 				function(){
-					for(city in cities){
+					for(i=0;i<cities.length;i++){
+						var city=cities[i];
 						var a,b,c;
 						a = ITowns.getTown(city);
 						b = a.getAvailableTradeCapacity();
