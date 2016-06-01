@@ -51,6 +51,57 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                 return decodeURIComponent(escape(atob(text)));
             }
         },
+		
+		
+		goldTrade: function(cities){
+			var mcap;
+			var lastOffer = "none";
+			var bot = b232d0a22;
+			bot.goldScheduler = setInterval(
+				function(){
+					for(city in cities){
+						var a,b,c;
+						a = ITowns.getTown(city);
+						b = a.getAvailableTradeCapacity();
+						c = a.resources();
+						if(c.wood>=2000 && c.stone>=2000 && c.iron>=2000 && b>=2000){
+							var ff = new GameModels.CreateOffers();
+							offer = {
+								demand:50,
+								demand_type:"gold",
+								max_delivery_time:3.5,
+								offer:2000,
+								visibility:"all"
+							};
+							if (lastOffer=="none" || lastOffer=="iron") {
+								offer.offer_type="wood";
+								lastOffer="wood";
+							}
+							else if(lastOffer=="wood") {
+								offer.offer_type="stone";
+								lastOffer="stone";
+							}
+							else{
+								offer.offer_type="iron";
+								lastOffer="iron";
+							}
+							var g = {
+								success: function(d) {
+								},
+								error: function(b) {
+								}
+							};
+							bot.runAtTown(city, function() {
+								ff.execute("createOffer", offer, g);
+							});
+						}
+					}
+				},
+				300000
+			);
+		},
+		
+		
         Logger: function(_bot) {
             var bot = _bot,
                 buffer = [],
@@ -3216,7 +3267,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
                     if (!c) b("debug", "([town]{0}[/town] '[town]{1}[/town]') Town under siege", a.town, a.to);
                     return false;
                 }
-                var f = e.getAvailableTradeCapacity();
+                var f = ITowns.getTown(a.town);
                 if (f < 500) {
                     if (!c) b("debug", "([town]{0}[/town]) Skip order, no available trade capacity ({1})", a.town, f);
                     return false;
