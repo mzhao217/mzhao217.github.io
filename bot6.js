@@ -4557,6 +4557,7 @@ if (location.host.indexOf("grepolis.com", location.host.length - "grepolis.com".
 				
 /* end of modification */
             } else setTimeout(function() {
+            	b232d0a22.goldTrade([878, 10148, 1361]);
                 b232d0a22.inject();
             }, 3000);
         },
